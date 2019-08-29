@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- add js and css (for widget) -->
+        <template id="assets_backend" name="Delivery Exchange assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/delivery_exchange/static/src/js/script.js"/>
+                <link href="/delivery_exchange/static/src/css/style.css" rel="stylesheet"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- add exchange action to allow the creation exchange pickings-->
+    <act_window name="Delivery Exchange" id="act_stock_delivery_exchange"
+        res_model="stock.delivery.exchange"
+        view_mode="form" target="new"/>
+
+    <!-- the form for allow the user specify the parameters for exchange porcess-->
+    <record id="view_stock_return_picking_form" model="ir.ui.view">
+        <field name="name">Return lines</field>
+        <field name="model">stock.delivery.exchange</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="move_dest_exists" invisible="1"/>
+                <group attrs="{'invisible': [('move_dest_exists', '=', False)]}">
+                    <div class="oe_grey">
+                        <p>This picking appears to be chained with another operation. later if the delivery of the products you exchange here is completed make sure reverse the create exchange picking
+                        and check the created invoices in related processes</p>
+                    </div>
+                </group>
+                <group>
+                    <field name="product_exchange_moves" nolabel="1">
+                        <tree editable="top">
+                            <field name="product_id" attrs="{'readonly':['|',('purchase_line_id','!=',False),('sale_line_id','!=',False)]}" options="{'no_create': True, 'no_open': True}" force_save="1"/>
+                            <field name="quantity"/>
+                            <field name="price_unit"/>
+                            <field name="uom_id" attrs="{'readonly':['|',('purchase_line_id','!=',False),('sale_line_id','!=',False)]}" groups="uom.group_uom"/>
+                            <field name="purchase_line_id" invisible="1"/>
+                            <field name="sale_line_id" invisible="1"/>
+                        </tree>
+                    </field>
+                </group>
+                <group>
+                    <field name="parent_location_id" invisible="1"/>
+                    <field name="original_location_id" invisible="1"/>
+                    <field name="location_id" options="{'no_create': True, 'no_open': True}" groups="stock.group_stock_multi_locations"/>
+                    <field name="product_added" invisible="1"/>
+                    <field string="Customer" name="partner_id" attrs="{'invisible':[('product_added','=',False)],'required':[('product_added','=',True)]}" widget="res_partner_many2one" context="{'search_default_customer':1, 'show_address': 1, 'default_is_company': True, 'show_vat': True}" options="{&quot;always_reload&quot;: True, &quot;no_quick_create&quot;: True}" domain="[('customer', '=', True)]"/>
+                </group>
+                <footer>
+                    <button name="exchange_products" string="Exchange" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

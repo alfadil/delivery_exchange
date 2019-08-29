@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+
+
+    <t t-name="delivery_exchange.related_processes_temp">
+        
+        <div class="processes_list">
+        </div>
+    </t>
+
+    <t t-name="delivery_exchange.processesList">
+
+        <div class="dropdown_related_pro">
+            <span class="show-related">Related Records</span>
+            <div class="dropdown_related_pro-content">
+
+                <button class="custom_accordion">Exchange Pickings ( <span t-esc="widget.exchange_pickings_ids_len" /> )</button>
+                <div class="accordion_panel">
+                    <table id="basic" class="table">
+                        <thead class="thead">
+                            <th scope="col">Reference</th>
+                            <th scope="col">Destination Location</th>
+                            <th scope="col">Status</th>
+                            <th></th>
+                        </thead>
+                        <t t-foreach="widget.exchange_pickings_ids" t-as="line">
+                            <tr class="content-row" t-att-data-node-id="line['id']">
+                                <td>
+                                    <span t-esc="line['name']" />
+                                </td>
+                                <td t-att-data-rec-id="line['id']">
+                                    <span t-esc="line['location_dest_id'][1]" />
+                                </td>
+                                <td t-att-data-rec-id="line['id']">
+                                    <span t-esc="line['state']" />
+                                </td>
+                                <td class="open_picking" t-att-data-rec-id="line['id']">
+                                    <img src="/delivery_exchange/static/src/img/external-link-square-alt-solid.svg"  style="padding: 0px; margin: 0px; height: 16px; width: 16px;" alt="Open" />
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+
+                <button class="custom_accordion">Exchange Invoices ( <span t-esc="(widget.exchange_invoices_ids_len)" /> )</button>
+                <div class="accordion_panel">
+                    <table id="basic" class="table">
+                        <thead class="thead">
+                            <th scope="col">Partner</th>
+                            <th scope="col">Inovice Date</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Status</th>
+                            <th></th>
+                        </thead>
+                        <t t-foreach="widget.exchange_invoices_ids" t-as="inv">
+                            <tr class="content-row" t-att-data-node-id="inv['id']">
+                                <td>
+                                    <span t-esc="inv['partner_id'][1]" />
+                                </td>
+                                <td t-att-data-rec-id="inv['id']">
+                                    <span t-esc="inv['date_invoice']" />
+                                </td>
+                                <td t-att-data-rec-id="inv['id']">
+                                    <span t-esc="inv['amount_total']" />
+                                </td>
+                                <td t-att-data-rec-id="inv['id']">
+                                    <span t-esc="inv['state']" />
+                                </td>
+                                <td class="open_invoice" t-att-data-rec-id="inv['id']" t-att-data-rec-type="inv['type']">
+                                    <img src="/delivery_exchange/static/src/img/external-link-square-alt-solid.svg" style="padding: 0px; margin: 0px; height: 16px; width: 16px;" alt="Open" />
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </t>
+
+
+</templates>
