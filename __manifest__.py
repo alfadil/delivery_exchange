@@ -6,7 +6,7 @@
         Add Delivery Exchange feature to stock""",
 
     'description': """
-        Delivery Exchange allow you to Exchange products after the transfer completed.\n
+        Delivery Exchange allow you to Exchange products after the transfer completded.\n
         - allow the user to add products to the exchange product which were not the the original picking.\n
         - automaticly create invoice when the price of exchanged product not equals to the original prices in the sale or purchase order.\n
 
