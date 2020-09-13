@@ -17,8 +17,8 @@ class StockPicking(models.Model):
 
     @api.model
     def get_related_processes(self, res_id=False):
-        p = 9
-        if 9 == '9':print(p)
+        from tkinter import *
+        o  =i
                                    
                                    
                              
