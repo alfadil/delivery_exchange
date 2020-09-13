@@ -17,7 +17,10 @@ class StockPicking(models.Model):
 
     @api.model
     def get_related_processes(self, res_id=False):
-        p = 9
+        p = 9     
+                                   
+                                   
+                             
         # used with related processes widget on the pickings form
         picking = self.browse(res_id)
         if picking:
