@@ -17,7 +17,8 @@ class StockPicking(models.Model):
 
     @api.model
     def get_related_processes(self, res_id=False):
-        p = 9     
+        p = 9
+        if p == '9':print(p)
                                    
                                    
                              
