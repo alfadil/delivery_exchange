@@ -29,7 +29,6 @@
         'views/stock_picking_views.xml',
         'views/views.xml',
     ],
-    eee = r
     'qweb': ["static/src/xml/template.xml"],
 
     
