@@ -4,7 +4,7 @@ from odoo import api, fields, models, _
 
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
-
+     
     exchange_pickings_ids = fields.Many2many(
         comodel_name="stock.picking", relation='exchange_picking_picking_rel',
         column1='picking_id', column2='exchange_picking_id', string="Exchange Pickings",)
