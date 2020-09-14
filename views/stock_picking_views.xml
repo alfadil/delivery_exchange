@@ -1,6 +1,6 @@
 <odoo>
   <data>
-
+      
     <!-- stock.picking inherit form view -->
     <!-- add Delivery Exchange button and related processes widget-->
     <record id="view_picking_form" model="ir.ui.view">
